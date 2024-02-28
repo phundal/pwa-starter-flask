@@ -1,0 +1,51 @@
+<!-- index.html -->
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>New PWA App</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
+
+        <link rel="icon" href="{{url_for('static', filename='icons/icon_144x144.png')}}" type="image/png">
+        <link rel="icon" href="{{url_for('static', filename='icons/icon_192x192.png')}}" type="image/png">
+        <link rel="icon" href="{{url_for('static', filename='icons/icon_512x512.png')}}" type="image/png">
+        <link rel="apple-touch-icon" href="{{url_for('static', filename='icons/icon_144x144.png')}}" type="image/png">
+        <link rel="apple-touch-icon" href="{{url_for('static', filename='icons/icon_192x192.png')}}" type="image/png">
+        <link rel="apple-touch-icon" href="{{url_for('static', filename='icons/icon_512x512.png')}}" type="image/png">
+        <link rel="manifest" href="/manifest.json">
+        <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+            navigator.serviceWorker.register("/sw.js").then(function(registration) {
+                console.log('ServiceWorker registration successful with scope: ', registration.scope);
+            }, function(err) {
+                console.log('ServiceWorker registration failed: ', err);
+            });
+            });
+        };
+        </script>
+    </head>
+    
+    
+    <body>
+        <section class="hero is-link is-fullheight">
+            <div class="hero-head">
+                <div class="container is-fluid">
+                    <div class="hero-body">
+                        <div class="container has-text-centered">
+                            <div class="columns">
+                                
+                                    {% block content %}
+                                    <!-- this is where content will be added from downstream templates-->
+                                    {% endblock %}
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>
+
