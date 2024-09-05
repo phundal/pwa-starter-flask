@@ -1,4 +1,4 @@
-<!-- index.html -->
+<!-- base.html -->
 <html>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,6 +25,9 @@
             });
         };
         </script>
+        {% block head %}
+        <!-- this is where content will be added from downstream templates-->
+        {% endblock %}
     </head>
     
     
@@ -37,13 +40,11 @@
             </div>
             <div class="hero-body">
                 <div class="container has-text-centered">
-                    <div class="columns">
                         
-                            {% block content %}
+                            {% block body %}
                             <!-- this is where content will be added from downstream templates-->
                             {% endblock %}
                         
-                    </div>
                 </div>
             </div>
         </section>
